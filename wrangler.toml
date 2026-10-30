@@ -1,0 +1,9 @@
+name = "toll"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Runs before every `wrangler dev` / `wrangler deploy`, including the deploy
+# that Workers Builds performs on push to main. A failed validation aborts it.
+[build]
+command = "npm run validate"
