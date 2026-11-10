@@ -13,6 +13,7 @@ export const channels: Record<string, string[]> = {
     "claude-opus-4-6",
     "claude-fable-5",
     "claude-fable-5-1",
+    "claude-fable-5-2",
     "claude-haiku-5-5",
     "claude-opus-4-7",
     "claude-opus-4-8",
