@@ -17,7 +17,7 @@ for (const e of prices) {
     const v = e[field];
     if (typeof v !== "number" || !Number.isFinite(v) || v <= 0) errors.push(`${label}: ${field} must be a positive number, got ${v}`);
   }
-  for (const field of ["cache_read", "cache_write"] as const) {
+  for (const field of ["cache_read", "cache_write", "image_input"] as const) {
     const v = e[field];
     if (v !== undefined && (typeof v !== "number" || !Number.isFinite(v) || v <= 0)) {
       errors.push(`${label}: ${field} must be a positive number when present, got ${v}`);
@@ -43,3 +43,4 @@ if (errors.length > 0) {
 }
 const keys = occurrences.size;
 console.log(`prices.json OK: ${prices.length} entries, ${keys} model keys, all channel models covered.`);
+

@@ -1,6 +1,26 @@
 // Model names exactly as configured in the new-api channels. Every one of them
 // must resolve to exactly one entry (name or alias) in prices.json.
 export const channels: Record<string, string[]> = {
+  OpenAI: [
+    "gpt-6-luna",
+    "gpt-image-2.5-flare",
+    "gpt-image-2.6-sunburst",
+    "gpt-6-chat-thinking",
+    "gpt-image-2.5-sunburst",
+    "gpt-6-sol",
+    "gpt-5.6-sol",
+    "gpt-image-2",
+    "gpt-5.6-luna",
+    "gpt-image-1.5",
+    "gpt-image-2.5",
+    "gpt-image-2.6-flare",
+    "gpt-image-2.6",
+    "gpt-6.1-terra",
+    "codex-auto-review",
+    "gpt-6-astra",
+    "gpt-6.1-sol",
+    "gpt-5.6-terra",
+  ],
   CPA: [
     "claude-3-5-haiku-20241022",
     "claude-3-7-sonnet-20250219",
@@ -47,3 +67,4 @@ export const channels: Record<string, string[]> = {
     "glm-5",
   ],
 };
+

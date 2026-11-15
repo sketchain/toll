@@ -5,6 +5,7 @@ export interface PriceEntry {
   aliases: string[];
   input: number;
   output: number;
+  image_input?: number;
   cache_read?: number;
   cache_write?: number;
   source: string;
@@ -19,6 +20,7 @@ const USD_PER_RATIO = 2;
 export interface RatioConfig {
   model_ratio: Record<string, number>;
   completion_ratio: Record<string, number>;
+  image_ratio: Record<string, number>;
   cache_ratio: Record<string, number>;
   create_cache_ratio: Record<string, number>;
 }
@@ -32,6 +34,7 @@ export function buildRatios(entries: PriceEntry[]): RatioConfig {
   const out: RatioConfig = {
     model_ratio: {},
     completion_ratio: {},
+    image_ratio: {},
     cache_ratio: {},
     create_cache_ratio: {},
   };
@@ -39,9 +42,11 @@ export function buildRatios(entries: PriceEntry[]): RatioConfig {
     for (const key of [e.name, ...e.aliases]) {
       out.model_ratio[key] = round(e.input / USD_PER_RATIO);
       out.completion_ratio[key] = round(e.output / e.input);
+      if (e.image_input !== undefined) out.image_ratio[key] = round(e.image_input / e.input);
       if (e.cache_read !== undefined) out.cache_ratio[key] = round(e.cache_read / e.input);
       if (e.cache_write !== undefined) out.create_cache_ratio[key] = round(e.cache_write / e.input);
     }
   }
   return out;
 }
+
